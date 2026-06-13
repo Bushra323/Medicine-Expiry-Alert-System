@@ -1,0 +1,694 @@
+USE medicine_expiry_system;
+
+DROP TABLE medicines;
+
+DROP TABLE users;
+
+DROP TABLE pharmacists;
+
+CREATE TABLE users (
+
+    id INT PRIMARY KEY AUTO_INCREMENT,
+
+    name VARCHAR(50),
+
+    password VARCHAR(50)
+);
+
+CREATE TABLE pharmacists (
+
+    pharmacist_id VARCHAR(50),
+
+    password VARCHAR(50)
+);
+
+CREATE TABLE medicines (
+
+    id INT PRIMARY KEY AUTO_INCREMENT,
+
+    medicine_name VARCHAR(100),
+
+    registration_no VARCHAR(100),
+
+    manufacturing_license_no VARCHAR(100),
+
+    manufactured_by VARCHAR(100),
+
+    quantity INT,
+
+    expiry_date DATE
+);
+
+USE medicine_expiry_system;
+
+INSERT INTO pharmacists
+VALUES ('admin', '1234');
+
+
+USE medicine_expiry_system;
+
+TRUNCATE TABLE medicines;
+INSERT INTO medicines
+(medicine_name, registration_no, manufacturing_license_no, manufactured_by, quantity, expiry_date)
+VALUES
+('Panadol', '1001', '5001', 'GSK', 120, '2027-05-10'),
+('Augmentin', '1002', '5002', 'GSK', 80, '2026-12-15'),
+('Brufen', '1003', '5003', 'Abbott', 70, '2026-08-22'),
+('Disprin', '1004', '5004', 'Bayer', 45, '2025-06-10'),
+('Calpol', '012427', '000233', 'GlaxoSmithKline', 95, '2028-07-12'),
+('Rigix', '1006', '5006', 'Getz Pharma', 110, '2026-09-18'),
+('Arinac', '1007', '5007', 'Hilton Pharma', 65, '2025-07-01'),
+('Ponstan', '1008', '5008', 'Pfizer', 40, '2025-06-15'),
+('Ventolin', '1009', '5009', 'GSK', 25, '2026-10-20'),
+('Flagyl', '1010', '5010', 'Sanofi', 30, '2025-08-05'),
+('Amoxil', '1011', '5011', 'GSK', 75, '2027-02-14'),
+('Nuberol Forte', '1012', '5012', 'Sami Pharma', 55, '2025-06-08'),
+('Metrozine', '1013', '5013', 'Highnoon', 35, '2025-04-15'),
+('Cac1000', '1014', '5014', 'Searle', 50, '2026-11-25'),
+('Septran', '1015', '5015', 'ICI', 90, '2026-07-30'),
+('Zinnat', '1016', '5016', 'GSK', 60, '2025-06-18'),
+('Ciproxin', '1017', '5017', 'Bayer', 48, '2026-12-10'),
+('Lexotanil', '1018', '5018', 'Roche', 22, '2025-05-20'),
+('Surbex Z', '1019', '5019', 'Abbott', 100, '2027-01-05'),
+('Mucolator', '1020', '5020', 'Highnoon', 28, '2025-06-25'),
+('CoAmoxiclav', '1021', '5021', 'Getz Pharma', 45, '2026-04-15'),
+('Clarinex', '1022', '5022', 'MSD', 70, '2027-07-22'),
+('Montika', '1023', '5023', 'Getz Pharma', 65, '2026-05-01'),
+('Glucophage', '1024', '5024', 'Merck', 130, '2027-03-10'),
+('Janumet', '1025', '5025', 'MSD', 75, '2026-09-19'),
+('Concor', '1026', '5026', 'Merck', 88, '2027-01-11'),
+('Norvasc', '1027', '5027', 'Pfizer', 52, '2026-12-09'),
+('Cardura', '1028', '5028', 'Pfizer', 41, '2026-11-12'),
+('Losec', '1029', '5029', 'AstraZeneca', 80, '2026-08-05'),
+('Nexium', '1030', '5030', 'AstraZeneca', 60, '2026-09-16'),
+('Risek', '1031', '5031', 'Getz Pharma', 125, '2027-06-20'),
+('Motilium', '1032', '5032', 'Janssen', 45, '2025-09-15'),
+('Imodium', '1033', '5033', 'Janssen', 55, '2026-03-01'),
+('ORS', '1034', '5034', 'Searle', 150, '2027-07-14'),
+('Xyzal', '1035', '5035', 'UCB', 64, '2026-10-10'),
+('Zyrtec', '1036', '5036', 'Janssen', 73, '2026-05-09'),
+('Avil', '1037', '5037', 'Sanofi', 66, '2026-02-18'),
+('Atarax', '1038', '5038', 'Pfizer', 40, '2025-07-29'),
+('Actifed', '1039', '5039', 'GSK', 51, '2026-08-22'),
+('Telfast', '1040', '5040', 'Sanofi', 58, '2027-05-12');
+SELECT * FROM medicines;
+SHOW TABLES;
+SELECT * FROM pharmacists;
+INSERT INTO medicines
+(medicine_name, registration_no, manufacturing_license_no, manufactured_by, quantity, expiry_date)
+VALUES
+
+('Qalsan D', '1041', '5041', 'Sami Pharma', 75, '2027-03-15'),
+('Loprin', '1042', '5042', 'Getz Pharma', 95, '2026-08-20'),
+('Ascard', '1043', '5043', 'Atco', 70, '2026-05-10'),
+('Neuromet', '1044', '5044', 'Highnoon', 60, '2027-01-25'),
+('Neurobion', '1045', '5045', 'Merck', 85, '2026-09-17'),
+('Evion', '1046', '5046', 'Martin Dow', 100, '2027-06-12'),
+('Fefol', '1047', '5047', 'Abbott', 90, '2026-11-05'),
+('Sangobion', '1048', '5048', 'Merck', 55, '2026-12-01'),
+('Ferosoft', '1049', '5049', 'HighQ', 65, '2027-04-22'),
+('Calcimax', '1050', '5050', 'Searle', 88, '2027-07-30'),
+
+('One Alpha', '1051', '5051', 'Leo Pharma', 44, '2026-08-11'),
+('Mecobal', '1052', '5052', 'Getz Pharma', 72, '2027-02-28'),
+('Methycobal', '1053', '5053', 'Hilton Pharma', 81, '2026-10-14'),
+('Dijex MP', '1054', '5054', 'Sami Pharma', 63, '2026-09-07'),
+('Gaviscon', '1055', '5055', 'Reckitt', 46, '2026-12-19'),
+('Rennie', '1056', '5056', 'Bayer', 77, '2027-05-08'),
+('Maalox', '1057', '5057', 'Sanofi', 59, '2026-04-26'),
+('Pepto Bismol', '1058', '5058', 'P&G', 36, '2026-06-09'),
+('Buscopan', '1059', '5059', 'Sanofi', 68, '2027-08-16'),
+('Spasfon', '1060', '5060', 'Highnoon', 41, '2026-07-03'),
+
+('Duphaston', '1061', '5061', 'Abbott', 57, '2027-01-19'),
+('Primolut N', '1062', '5062', 'Bayer', 73, '2026-09-23'),
+('Femara', '1063', '5063', 'Novartis', 38, '2027-04-12'),
+('Clomid', '1064', '5064', 'Sanofi', 29, '2026-08-01'),
+('Folic Acid', '1065', '5065', 'Searle', 112, '2027-03-29'),
+('Materna', '1066', '5066', 'Pfizer', 48, '2026-12-15'),
+('Pregnacare', '1067', '5067', 'Vitabiotics', 66, '2027-07-11'),
+('Ostocal', '1068', '5068', 'GSK', 97, '2026-11-08'),
+('Caltrate', '1069', '5069', 'Pfizer', 74, '2027-06-17'),
+('Vitamin D3', '1070', '5070', 'Sami Pharma', 103, '2027-08-05'),
+
+('Velosef', '1071', '5071', 'Hilton Pharma', 58, '2026-10-20'),
+('Keflex', '1072', '5072', 'Lilly', 43, '2026-07-26'),
+('Cefspan', '1073', '5073', 'Getz Pharma', 61, '2027-05-04'),
+('Rocephin', '1074', '5074', 'Roche', 37, '2026-09-14'),
+('Cefim', '1075', '5075', 'Sami Pharma', 82, '2027-02-10'),
+('Macrobac', '1076', '5076', 'Highnoon', 49, '2026-06-18'),
+('Azomax', '1077', '5077', 'Getz Pharma', 64, '2027-01-07'),
+('Klaricid', '1078', '5078', 'Abbott', 33, '2026-12-27'),
+('Erythrocin', '1079', '5079', 'Abbott', 52, '2026-08-30'),
+('Doxycycline', '1080', '5080', 'Searle', 71, '2027-04-21');
+INSERT INTO medicines
+(medicine_name, registration_no, manufacturing_license_no, manufactured_by, quantity, expiry_date)
+VALUES
+
+('Actrapid', '1081', '5081', 'Novo Nordisk', 35, '2027-06-10'),
+('Mixtard', '1082', '5082', 'Novo Nordisk', 42, '2027-03-12'),
+('Lantus', '1083', '5083', 'Sanofi', 28, '2026-12-18'),
+('Levemir', '1084', '5084', 'Novo Nordisk', 31, '2027-01-09'),
+('Jardiance', '1085', '5085', 'Boehringer Ingelheim', 60, '2027-08-14'),
+
+('Diamicron', '1086', '5086', 'Servier', 77, '2026-11-01'),
+('Amaryl', '1087', '5087', 'Sanofi', 68, '2027-05-20'),
+('Galvus', '1088', '5088', 'Novartis', 54, '2026-09-17'),
+('Glucobay', '1089', '5089', 'Bayer', 45, '2027-02-22'),
+('Forxiga', '1090', '5090', 'AstraZeneca', 52, '2027-04-30'),
+
+('Cozaar', '1091', '5091', 'MSD', 70, '2027-06-25'),
+('Micardis', '1092', '5092', 'Boehringer Ingelheim', 61, '2026-10-11'),
+('Exforge', '1093', '5093', 'Novartis', 43, '2027-01-15'),
+('Tenormin', '1094', '5094', 'AstraZeneca', 49, '2026-08-09'),
+('Atenolol', '1095', '5095', 'Searle', 83, '2027-03-18'),
+
+('Lipitor', '1096', '5096', 'Pfizer', 57, '2027-07-04'),
+('Rosuva', '1097', '5097', 'Getz Pharma', 66, '2026-11-24'),
+('Atorva', '1098', '5098', 'Hilton Pharma', 72, '2027-05-11'),
+('Crestor', '1099', '5099', 'AstraZeneca', 38, '2026-12-07'),
+('Zocor', '1100', '5100', 'MSD', 44, '2027-08-19'),
+
+('Betnesol', '1101', '5101', 'GSK', 53, '2026-10-26'),
+('Hydrocortisone', '1102', '5102', 'Pfizer', 47, '2027-01-30'),
+('Prednisolone', '1103', '5103', 'Abbott', 64, '2026-09-05'),
+('Medrol', '1104', '5104', 'Pfizer', 35, '2027-04-13'),
+('Deltacortil', '1105', '5105', 'Searle', 58, '2026-12-22'),
+
+('Diflucan', '1106', '5106', 'Pfizer', 39, '2027-07-15'),
+('Canesten', '1107', '5107', 'Bayer', 51, '2026-11-18'),
+('Nizoral', '1108', '5108', 'Janssen', 42, '2027-02-06'),
+('Lamisil', '1109', '5109', 'Novartis', 33, '2026-08-28'),
+('Fluconazole', '1110', '5110', 'Highnoon', 73, '2027-05-17'),
+
+('Voltaren', '1111', '5111', 'Novartis', 86, '2027-03-25'),
+('Celebrex', '1112', '5112', 'Pfizer', 45, '2026-10-03'),
+('Naproxen', '1113', '5113', 'Sami Pharma', 78, '2027-01-21'),
+('Mefenamic Acid', '1114', '5114', 'Hilton Pharma', 69, '2026-12-14'),
+('Paracetamol Syrup', '1115', '5115', 'GSK', 102, '2027-08-02'),
+
+('Tussex', '1116', '5116', 'Highnoon', 55, '2026-09-12'),
+('Benadryl Syrup', '1117', '5117', 'Johnson & Johnson', 61, '2027-06-08'),
+('Actifed Syrup', '1118', '5118', 'GSK', 48, '2026-11-29'),
+('Corex', '1119', '5119', 'Pfizer', 37, '2027-04-04'),
+('Alex Syrup', '1120', '5120', 'Glenmark', 52, '2027-07-27');
+SELECT COUNT(*) FROM medicines;
+INSERT INTO medicines
+(medicine_name, registration_no, manufacturing_license_no, manufactured_by, quantity, expiry_date)
+VALUES
+
+('Mucosolvan', '1121', '5121', 'Sanofi', 48, '2027-02-14'),
+('Pulmonol', '1122', '5122', 'Getz Pharma', 52, '2026-09-15'),
+('Clamox', '1123', '5123', 'Sami Pharma', 67, '2027-03-08'),
+('Floxab', '1124', '5124', 'Abbott', 58, '2026-12-22'),
+('Azee', '1125', '5125', 'Getz Pharma', 44, '2027-05-19'),
+('Kestine', '1126', '5126', 'Highnoon', 39, '2026-08-11'),
+('Montiget', '1127', '5127', 'Getz Pharma', 61, '2027-06-25'),
+('Allerset', '1128', '5128', 'Hilton Pharma', 54, '2026-11-30'),
+('Histac', '1129', '5129', 'Searle', 70, '2027-01-15'),
+('Risek Insta', '1130', '5130', 'Getz Pharma', 81, '2027-07-20'),
+
+('Esso', '1131', '5131', 'Sami Pharma', 66, '2026-10-17'),
+('Omecap', '1132', '5132', 'Highnoon', 57, '2027-04-09'),
+('Gutron', '1133', '5133', 'Abbott', 35, '2026-12-05'),
+('Ganaton', '1134', '5134', 'Abbott', 42, '2027-02-28'),
+('Domel', '1135', '5135', 'Hilton Pharma', 49, '2026-09-21'),
+('Digestin', '1136', '5136', 'Searle', 63, '2027-08-01'),
+('Laxoberon', '1137', '5137', 'Boehringer', 38, '2026-07-15'),
+('Duphalac', '1138', '5138', 'Abbott', 55, '2027-05-11'),
+('Cremaffin', '1139', '5139', 'Abbott', 47, '2026-11-09'),
+('Softin', '1140', '5140', 'Getz Pharma', 74, '2027-03-26'),
+
+('Voren', '1141', '5141', 'Novartis', 68, '2027-07-07'),
+('Ansaid', '1142', '5142', 'Pfizer', 51, '2026-08-28'),
+('Diclomax', '1143', '5143', 'Sami Pharma', 59, '2027-01-16'),
+('Relifen', '1144', '5144', 'Hilton Pharma', 45, '2026-12-01'),
+('Flexin', '1145', '5145', 'Highnoon', 62, '2027-04-17'),
+('Myolax', '1146', '5146', 'Searle', 58, '2026-09-03'),
+('Robaxin', '1147', '5147', 'Pfizer', 40, '2027-06-14'),
+('Tryptanol', '1148', '5148', 'MSD', 36, '2026-11-19'),
+('Lexapro', '1149', '5149', 'Lundbeck', 42, '2027-02-12'),
+('Zoloft', '1150', '5150', 'Pfizer', 50, '2027-08-23'),
+
+('Prozac', '1151', '5151', 'Lilly', 38, '2026-10-06'),
+('Xanax', '1152', '5152', 'Pfizer', 27, '2027-03-10'),
+('Valium', '1153', '5153', 'Roche', 31, '2026-12-27'),
+('Ativan', '1154', '5154', 'Pfizer', 24, '2027-05-05'),
+('Rivotril', '1155', '5155', 'Roche', 29, '2026-08-24'),
+('Keppra', '1156', '5156', 'UCB', 43, '2027-07-18'),
+('Tegretol', '1157', '5157', 'Novartis', 52, '2026-11-14'),
+('Lamictal', '1158', '5158', 'GSK', 34, '2027-01-29'),
+('Topamax', '1159', '5159', 'Janssen', 46, '2026-09-09'),
+('Neurontin', '1160', '5160', 'Pfizer', 55, '2027-04-21'),
+
+('Aerius', '1161', '5161', 'MSD', 62, '2027-08-12'),
+('Claritin', '1162', '5162', 'Bayer', 48, '2026-12-31'),
+('Fexet', '1163', '5163', 'Getz Pharma', 57, '2027-06-01'),
+('Cetirizine', '1164', '5164', 'Searle', 71, '2026-10-25'),
+('Loratadine', '1165', '5165', 'Highnoon', 69, '2027-02-20'),
+('Montelukast', '1166', '5166', 'Hilton Pharma', 64, '2026-08-13'),
+('Ventair', '1167', '5167', 'Getz Pharma', 53, '2027-05-22'),
+('Symbicort', '1168', '5168', 'AstraZeneca', 28, '2026-11-17'),
+('Seretide', '1169', '5169', 'GSK', 32, '2027-03-31'),
+('Pulmicort', '1170', '5170', 'AstraZeneca', 35, '2026-09-07'),
+
+('Coversyl', '1171', '5171', 'Servier', 49, '2027-07-15'),
+('Tritace', '1172', '5172', 'Sanofi', 43, '2026-12-11'),
+('Zestril', '1173', '5173', 'AstraZeneca', 55, '2027-04-27'),
+('Renitec', '1174', '5174', 'MSD', 38, '2026-10-09'),
+('Capoten', '1175', '5175', 'Bristol Myers', 41, '2027-01-12'),
+('Lasix', '1176', '5176', 'Sanofi', 60, '2027-08-04'),
+('Aldactone', '1177', '5177', 'Pfizer', 44, '2026-11-21'),
+('Dytor', '1178', '5178', 'Getz Pharma', 52, '2027-05-16'),
+('Hydrin', '1179', '5179', 'Highnoon', 58, '2026-09-26'),
+('Cardizem', '1180', '5180', 'Sanofi', 35, '2027-02-07'),
+
+('Plavix', '1181', '5181', 'Sanofi', 48, '2027-07-30'),
+('Brilinta', '1182', '5182', 'AstraZeneca', 39, '2026-12-18'),
+('Xarelto', '1183', '5183', 'Bayer', 34, '2027-04-05'),
+('Eliquis', '1184', '5184', 'Pfizer', 31, '2026-10-29'),
+('Warfarin', '1185', '5185', 'Abbott', 46, '2027-03-14'),
+('Thyroxine', '1186', '5186', 'GSK', 70, '2027-06-27'),
+('Eltroxin', '1187', '5187', 'Aspen', 61, '2026-11-08'),
+('Tapazole', '1188', '5188', 'Pfizer', 29, '2027-01-23'),
+('Neo Mercazole', '1189', '5189', 'Abbott', 33, '2026-08-18'),
+('Calcitriol', '1190', '5190', 'Searle', 58, '2027-05-09'),
+
+('Livolin', '1191', '5191', 'Abbott', 64, '2027-07-21'),
+('Hepamerz', '1192', '5192', 'Merz', 37, '2026-10-15'),
+('Essentiale Forte', '1193', '5193', 'Sanofi', 42, '2027-03-02'),
+('Ursofalk', '1194', '5194', 'Dr Falk', 35, '2026-12-06'),
+('Actigall', '1195', '5195', 'Pfizer', 28, '2027-04-18'),
+('Cystone', '1196', '5196', 'Himalaya', 67, '2027-08-10'),
+('Rowatinex', '1197', '5197', 'Rowa', 31, '2026-11-27'),
+('Ural', '1198', '5198', 'Pfizer', 55, '2027-01-20'),
+('Potrate', '1199', '5199', 'Sami Pharma', 49, '2026-09-13'),
+('Nephrocap', '1200', '5200', 'Highnoon', 62, '2027-06-03');
+SELECT * FROM medicines;
+INSERT INTO medicines
+(medicine_name, registration_no, manufacturing_license_no, manufactured_by, quantity, expiry_date)
+VALUES
+
+('Panadol Extra', '1201', '5201', 'GSK', 85, '2026-06-20'),
+('Flagyl Suspension', '1202', '5202', 'Sanofi', 40, '2026-06-18'),
+('Mosegor', '1203', '5203', 'Novartis', 32, '2026-06-25'),
+('Bonjela Gel', '1204', '5204', 'Reckitt', 25, '2026-06-22'),
+('Rulid', '1205', '5205', 'Sanofi', 55, '2026-06-28'),
+
+('Tavanic', '1206', '5206', 'Sanofi', 48, '2026-07-15'),
+('Levoflox', '1207', '5207', 'Getz Pharma', 60, '2026-07-18'),
+('Zopent', '1208', '5208', 'Hilton Pharma', 38, '2026-07-10'),
+('Norflox', '1209', '5209', 'Sami Pharma', 42, '2026-07-22'),
+('Xepa', '1210', '5210', 'Highnoon', 35, '2026-07-05'),
+
+('Glyset', '1211', '5211', 'Pfizer', 51, '2027-02-15'),
+('Piozer', '1212', '5212', 'Getz Pharma', 72, '2027-03-18'),
+('Metforal', '1213', '5213', 'Hilton Pharma', 66, '2027-05-20'),
+('Insugen', '1214', '5214', 'Biocon', 30, '2027-01-10'),
+('Humulin R', '1215', '5215', 'Lilly', 22, '2027-06-11'),
+
+('Bon One', '1216', '5216', 'Searle', 74, '2027-04-28'),
+('Jointace', '1217', '5217', 'Vitabiotics', 65, '2027-07-16'),
+('Osteocare', '1218', '5218', 'Vitabiotics', 59, '2027-08-08'),
+('Seven Seas Cod Liver Oil', '1219', '5219', 'Seven Seas', 41, '2027-05-05'),
+('Centrum Silver', '1220', '5220', 'Pfizer', 90, '2027-03-30'),
+
+('Mestinon', '1221', '5221', 'Roche', 18, '2026-06-21'),
+('Sibelium', '1222', '5222', 'Janssen', 46, '2026-06-29'),
+('Migranil', '1223', '5223', 'Highnoon', 33, '2026-06-17'),
+('Betahistine', '1224', '5224', 'Abbott', 57, '2026-06-24'),
+('Vertin', '1225', '5225', 'Abbott', 49, '2026-06-19'),
+
+('Cataflam', '1226', '5226', 'Novartis', 81, '2027-04-22'),
+('Arcoxia', '1227', '5227', 'MSD', 52, '2027-07-14'),
+('Synflex', '1228', '5228', 'Getz Pharma', 68, '2027-02-11'),
+('Anarex', '1229', '5229', 'Pfizer', 39, '2027-06-09'),
+('Movax', '1230', '5230', 'Sami Pharma', 58, '2027-03-17'),
+
+('Zemiglo', '1231', '5231', 'Getz Pharma', 63, '2027-05-12'),
+('Qtern', '1232', '5232', 'AstraZeneca', 28, '2027-08-01'),
+('Trajenta', '1233', '5233', 'Boehringer Ingelheim', 35, '2027-01-27'),
+('Rybelsus', '1234', '5234', 'Novo Nordisk', 21, '2027-04-06'),
+('Ozempic', '1235', '5235', 'Novo Nordisk', 19, '2027-07-03'),
+
+('Clopid', '1236', '5236', 'Getz Pharma', 73, '2026-06-23'),
+('Cardnit', '1237', '5237', 'Sami Pharma', 44, '2026-06-26'),
+('Nitrocontin', '1238', '5238', 'Abbott', 36, '2026-06-18'),
+('Angised', '1239', '5239', 'Pfizer', 25, '2026-06-20'),
+('Isordil', '1240', '5240', 'Roche', 31, '2026-06-27'),
+
+('Dermovate', '1241', '5241', 'GSK', 50, '2027-06-18'),
+('Fucidin Cream', '1242', '5242', 'LEO Pharma', 42, '2027-03-07'),
+('Bactroban', '1243', '5243', 'GSK', 29, '2027-07-29'),
+('Betnovate', '1244', '5244', 'GSK', 56, '2027-05-16'),
+('Canesten Cream', '1245', '5245', 'Bayer', 48, '2027-01-13'),
+
+('Refresh Tears', '1246', '5246', 'AbbVie', 22, '2026-06-30'),
+('Systane Ultra', '1247', '5247', 'Alcon', 37, '2027-04-04'),
+('Tobrex Eye Drops', '1248', '5248', 'Alcon', 26, '2026-06-16'),
+('Optive', '1249', '5249', 'Allergan', 40, '2027-08-19'),
+('Artelac', '1250', '5250', 'Bausch & Lomb', 34, '2027-02-20');
+INSERT INTO medicines
+(medicine_name, registration_no, manufacturing_license_no, manufactured_by, quantity, expiry_date)
+VALUES
+
+('Avelox', '1251', '5251', 'Bayer', 42, '2027-06-15'),
+('Zithromax', '1252', '5252', 'Pfizer', 58, '2027-03-20'),
+('Meronem', '1253', '5253', 'AstraZeneca', 25, '2027-07-11'),
+('Tienam', '1254', '5254', 'MSD', 18, '2027-04-08'),
+('Cefobid', '1255', '5255', 'Pfizer', 36, '2027-02-19'),
+
+('Targocid', '1256', '5256', 'Sanofi', 22, '2027-05-17'),
+('Vibramycin', '1257', '5257', 'Pfizer', 49, '2027-08-01'),
+('Dalacin C', '1258', '5258', 'Pfizer', 44, '2027-01-29'),
+('Unasyn', '1259', '5259', 'Pfizer', 31, '2027-06-24'),
+('Fortum', '1260', '5260', 'GSK', 28, '2027-03-13'),
+
+('Betaloc', '1261', '5261', 'AstraZeneca', 55, '2027-07-20'),
+('Lopressor', '1262', '5262', 'Novartis', 48, '2027-04-05'),
+('Diovan', '1263', '5263', 'Novartis', 67, '2027-08-14'),
+('Adalat', '1264', '5264', 'Bayer', 53, '2027-05-09'),
+('Catapres', '1265', '5265', 'Boehringer Ingelheim', 35, '2027-02-28'),
+
+('Tricor', '1266', '5266', 'Abbott', 41, '2027-06-11'),
+('Fenoget', '1267', '5267', 'Getz Pharma', 60, '2027-03-27'),
+('Lipiget', '1268', '5268', 'Getz Pharma', 75, '2027-07-04'),
+('Eziday', '1269', '5269', 'Sami Pharma', 46, '2027-04-16'),
+('Vastarel', '1270', '5270', 'Servier', 39, '2027-01-22'),
+
+('Procoralan', '1271', '5271', 'Servier', 28, '2027-08-07'),
+('Cordarone', '1272', '5272', 'Sanofi', 34, '2027-05-25'),
+('Tambocor', '1273', '5273', '3M Pharma', 21, '2027-03-18'),
+('Isoptin', '1274', '5274', 'Abbott', 45, '2027-06-30'),
+('Lanoxin', '1275', '5275', 'GSK', 37, '2027-02-12'),
+
+('Accolate', '1276', '5276', 'AstraZeneca', 32, '2027-07-09'),
+('Spiriva', '1277', '5277', 'Boehringer Ingelheim', 26, '2027-04-20'),
+('Foradil', '1278', '5278', 'Novartis', 30, '2027-01-31'),
+('Combivent', '1279', '5279', 'Boehringer Ingelheim', 23, '2027-05-13'),
+('Atrovent', '1280', '5280', 'Boehringer Ingelheim', 29, '2027-08-03'),
+
+('Remeron', '1281', '5281', 'MSD', 42, '2027-03-11'),
+('Effexor XR', '1282', '5282', 'Pfizer', 38, '2027-06-26'),
+('Cymbalta', '1283', '5283', 'Lilly', 35, '2027-04-07'),
+('Wellbutrin XL', '1284', '5284', 'GSK', 31, '2027-01-18'),
+('Abilify', '1285', '5285', 'Otsuka', 27, '2027-07-22'),
+
+('Seroquel', '1286', '5286', 'AstraZeneca', 33, '2027-05-06'),
+('Zyprexa', '1287', '5287', 'Lilly', 24, '2027-02-25'),
+('Invega', '1288', '5288', 'Janssen', 29, '2027-06-14'),
+('Saphris', '1289', '5289', 'AbbVie', 20, '2027-03-29'),
+('Latuda', '1290', '5290', 'Sun Pharma', 22, '2027-08-12'),
+
+('Combigan', '1291', '5291', 'Allergan', 18, '2027-05-16'),
+('Travatan Z', '1292', '5292', 'Alcon', 21, '2027-02-08'),
+('Lumigan', '1293', '5293', 'AbbVie', 19, '2027-07-01'),
+('Alphagan P', '1294', '5294', 'Allergan', 17, '2027-04-24'),
+('Cosopt', '1295', '5295', 'MSD', 16, '2027-01-15'),
+
+('Xalatan', '1296', '5296', 'Pfizer', 20, '2027-06-05'),
+('Timoptic', '1297', '5297', 'MSD', 23, '2027-03-21'),
+('Nevanac', '1298', '5298', 'Alcon', 18, '2027-07-27'),
+('Acular', '1299', '5299', 'Allergan', 24, '2027-05-10'),
+('Zaditor', '1300', '5300', 'Novartis', 26, '2027-02-17');
+INSERT INTO medicines
+(medicine_name, registration_no, manufacturing_license_no, manufactured_by, quantity, expiry_date)
+VALUES
+
+('Doxycin', '45121', '62145', 'Getz Pharma', 45, '2027-05-12'),
+('Roxid', '45122', '62146', 'Hilton Pharma', 38, '2027-07-18'),
+('Moxif', '45123', '62147', 'Sami Pharma', 29, '2027-03-25'),
+('Levomed', '45124', '62148', 'Highnoon', 52, '2027-08-10'),
+('Cefspan', '45125', '62149', 'Getz Pharma', 41, '2027-01-15'),
+
+('Biflox', '45126', '62150', 'Abbott', 36, '2027-06-30'),
+('Toraxin', '45127', '62151', 'Pfizer', 27, '2027-04-20'),
+('Mefril', '45128', '62152', 'Searle', 48, '2027-02-14'),
+('Dolvin', '45129', '62153', 'Hilton Pharma', 55, '2027-07-09'),
+('Febrol', '45130', '62154', 'Getz Pharma', 61, '2027-05-04'),
+
+('Neurovit Forte', '45131', '62155', 'Highnoon', 34, '2027-08-16'),
+('Vitamax Plus', '45132', '62156', 'Sami Pharma', 44, '2027-03-12'),
+('Zincofer', '45133', '62157', 'Nutrifactor', 58, '2027-06-22'),
+('Ferrolife', '45134', '62158', 'Getz Pharma', 40, '2027-01-28'),
+('Calfer D', '45135', '62159', 'Hilton Pharma', 35, '2027-07-14'),
+
+('Gastromet', '45136', '62160', 'Abbott', 47, '2027-04-08'),
+('Ulcid', '45137', '62161', 'Pfizer', 42, '2027-05-30'),
+('Refluxon', '45138', '62162', 'Highnoon', 39, '2027-02-26'),
+('Peptazole', '45139', '62163', 'Sami Pharma', 51, '2027-08-07'),
+('Acidnil', '45140', '62164', 'Getz Pharma', 33, '2027-06-11'),
+
+('Cardiol', '45141', '62165', 'Hilton Pharma', 29, '2027-01-21'),
+('Hypernil', '45142', '62166', 'Searle', 54, '2027-07-28'),
+('Pressoval', '45143', '62167', 'Abbott', 45, '2027-03-17'),
+('Angiwell', '45144', '62168', 'Pfizer', 32, '2027-05-25'),
+('Hearton', '45145', '62169', 'Getz Pharma', 38, '2027-08-13');
+
+INSERT INTO medicines
+(medicine_name, registration_no, manufacturing_license_no, manufactured_by, quantity, expiry_date)
+VALUES
+
+('Respinol', '45146', '62170', 'Getz Pharma', 41, '2027-04-12'),
+('Bronchicare', '45147', '62171', 'Hilton Pharma', 33, '2027-06-28'),
+('Asthmovent', '45148', '62172', 'Sami Pharma', 29, '2027-02-15'),
+('Coughnil', '45149', '62173', 'Highnoon', 52, '2027-07-09'),
+('Airmax Forte', '45150', '62174', 'Abbott', 46, '2027-03-18'),
+
+('Dermasol', '45151', '62175', 'Pfizer', 37, '2027-08-04'),
+('Skinzol', '45152', '62176', 'Getz Pharma', 28, '2027-05-11'),
+('Acnetrol', '45153', '62177', 'Hilton Pharma', 31, '2027-01-25'),
+('Fungicure', '45154', '62178', 'Sami Pharma', 44, '2027-06-17'),
+('Dermaheal', '45155', '62179', 'Highnoon', 39, '2027-04-30'),
+
+('Kidnecare', '45156', '62180', 'Abbott', 35, '2027-02-09'),
+('Urinex', '45157', '62181', 'Pfizer', 48, '2027-07-22'),
+('Renafix', '45158', '62182', 'Getz Pharma', 42, '2027-03-14'),
+('Nephrol', '45159', '62183', 'Hilton Pharma', 30, '2027-08-01'),
+('Uromax', '45160', '62184', 'Sami Pharma', 54, '2027-05-20'),
+
+('Bonecare Plus', '45161', '62185', 'Nutrifactor', 62, '2027-04-08'),
+('Calciwell', '45162', '62186', 'Getz Pharma', 51, '2027-06-13'),
+('D3 Forte', '45163', '62187', 'Hilton Pharma', 67, '2027-02-28'),
+('Vitabone', '45164', '62188', 'Sami Pharma', 43, '2027-07-26'),
+('Osteofit', '45165', '62189', 'Highnoon', 38, '2027-01-16'),
+
+('Liverton', '45166', '62190', 'Abbott', 27, '2027-05-04'),
+('Hepacure', '45167', '62191', 'Pfizer', 33, '2027-03-21'),
+('BiliCare', '45168', '62192', 'Getz Pharma', 36, '2027-08-09'),
+('Hepawell', '45169', '62193', 'Hilton Pharma', 40, '2027-06-01'),
+('Livogen Plus', '45170', '62194', 'Sami Pharma', 29, '2027-04-17');
+
+INSERT INTO medicines
+(medicine_name, registration_no, manufacturing_license_no, manufactured_by, quantity, expiry_date)
+VALUES
+
+('Neurocalm', '45171', '62195', 'Highnoon', 32, '2027-07-15'),
+('Mindrelax', '45172', '62196', 'Abbott', 28, '2027-02-12'),
+('Brainvit', '45173', '62197', 'Pfizer', 47, '2027-05-28'),
+('Nervitol', '45174', '62198', 'Getz Pharma', 51, '2027-08-18'),
+('Neurofit', '45175', '62199', 'Hilton Pharma', 43, '2027-03-06'),
+
+('Visionex', '45176', '62200', 'Alcon', 26, '2027-06-20'),
+('Eyecare Plus', '45177', '62201', 'Allergan', 34, '2027-04-04'),
+('Optifresh', '45178', '62202', 'Bausch & Lomb', 22, '2027-01-30'),
+('Clearvision', '45179', '62203', 'Alcon', 31, '2027-07-12'),
+('Eyeguard', '45180', '62204', 'Allergan', 27, '2027-05-03'),
+
+('Femicare', '45181', '62205', 'Searle', 39, '2027-02-24'),
+('WomenVit', '45182', '62206', 'Nutrifactor', 63, '2027-08-07'),
+('IronPlus', '45183', '62207', 'Getz Pharma', 57, '2027-06-10'),
+('Prenafol', '45184', '62208', 'Hilton Pharma', 41, '2027-03-29'),
+('Femifit', '45185', '62209', 'Sami Pharma', 48, '2027-05-14'),
+
+('Childvit', '45186', '62210', 'Nutrifactor', 54, '2027-07-27'),
+('Kidzyme', '45187', '62211', 'Highnoon', 38, '2027-04-25'),
+('JuniorCare', '45188', '62212', 'Abbott', 35, '2027-01-19'),
+('Babygain', '45189', '62213', 'Pfizer', 29, '2027-06-06'),
+('GrowWell', '45190', '62214', 'Getz Pharma', 52, '2027-02-17'),
+
+('Immunex', '45191', '62215', 'Hilton Pharma', 44, '2027-08-12'),
+('Defence Plus', '45192', '62216', 'Nutrifactor', 61, '2027-05-23'),
+('Immunoboost', '45193', '62217', 'Sami Pharma', 46, '2027-03-11'),
+('Vitashield', '45194', '62218', 'Highnoon', 58, '2027-07-04'),
+('Protecta', '45195', '62219', 'Abbott', 33, '2027-01-27');
+
+INSERT INTO medicines
+(medicine_name, registration_no, manufacturing_license_no, manufactured_by, quantity, expiry_date)
+VALUES
+
+('DigestAid', '45196', '62220', 'Pfizer', 42, '2027-06-15'),
+('Enzycare', '45197', '62221', 'Getz Pharma', 36, '2027-04-19'),
+('Stomacalm', '45198', '62222', 'Hilton Pharma', 28, '2027-02-07'),
+('Gutwell', '45199', '62223', 'Sami Pharma', 49, '2027-08-22'),
+('DigestPro', '45200', '62224', 'Highnoon', 31, '2027-05-09'),
+
+('Sleepwell', '45201', '62225', 'Abbott', 25, '2027-03-28'),
+('Reston', '45202', '62226', 'Pfizer', 34, '2027-07-11'),
+('Nightrelax', '45203', '62227', 'Getz Pharma', 29, '2027-01-24'),
+('Calmrest', '45204', '62228', 'Hilton Pharma', 37, '2027-06-03'),
+('Dreamvita', '45205', '62229', 'Sami Pharma', 26, '2027-04-14'),
+
+('Enervit', '45206', '62230', 'Nutrifactor', 65, '2027-08-05'),
+('Powermax', '45207', '62231', 'Highnoon', 54, '2027-05-20'),
+('EnergyPlus', '45208', '62232', 'Abbott', 47, '2027-03-02'),
+('Vigoron', '45209', '62233', 'Pfizer', 43, '2027-07-24'),
+('Activit', '45210', '62234', 'Getz Pharma', 59, '2027-02-13'),
+
+('ColdAway', '45211', '62235', 'Hilton Pharma', 39, '2027-06-29'),
+('FluStop', '45212', '62236', 'Sami Pharma', 45, '2027-04-05'),
+('NasalClear', '45213', '62237', 'Highnoon', 32, '2027-01-31'),
+('Sinucare', '45214', '62238', 'Abbott', 27, '2027-08-16'),
+('RhinoRelief', '45215', '62239', 'Pfizer', 41, '2027-05-26'),
+
+('MetaboFit', '45216', '62240', 'Getz Pharma', 36, '2027-03-18'),
+('SugarCare Plus', '45217', '62241', 'Hilton Pharma', 48, '2027-07-07'),
+('GlucoBalance', '45218', '62242', 'Sami Pharma', 52, '2027-02-22'),
+('DiaControl', '45219', '62243', 'Highnoon', 44, '2027-06-12'),
+('InsuCare', '45220', '62244', 'Abbott', 29, '2027-04-27');
+SELECT * FROM medicines;
+INSERT INTO medicines
+(medicine_name, registration_no, manufacturing_license_no, manufactured_by, quantity, expiry_date)
+VALUES
+
+('Cardiostat', '45221', '62245', 'Getz Pharma', 42, '2026-06-18'),
+('Respicure', '45222', '62246', 'Hilton Pharma', 37, '2026-06-24'),
+('Painofree', '45223', '62247', 'Sami Pharma', 51, '2026-07-05'),
+('Vitaforce Gold', '45224', '62248', 'Nutrifactor', 64, '2027-05-18'),
+('Gastrolax', '45225', '62249', 'Abbott', 33, '2027-03-14'),
+
+('Hepatron', '45226', '62250', 'Pfizer', 28, '2027-07-20'),
+('Renaflow', '45227', '62251', 'Highnoon', 39, '2027-04-02'),
+('Pulmocare', '45228', '62252', 'Getz Pharma', 47, '2026-06-21'),
+('Immunofit', '45229', '62253', 'Hilton Pharma', 55, '2027-08-10'),
+('Neuroguard', '45230', '62254', 'Searle', 41, '2027-01-29'),
+
+('Flexicare', '45231', '62255', 'Abbott', 35, '2027-06-07'),
+('Dermacalm', '45232', '62256', 'Pfizer', 31, '2026-06-27'),
+('Allergex Plus', '45233', '62257', 'Getz Pharma', 44, '2027-02-11'),
+('Sugarnil', '45234', '62258', 'Hilton Pharma', 58, '2027-05-22'),
+('Cardiovit', '45235', '62259', 'Sami Pharma', 49, '2027-03-30'),
+
+('Enerboost', '45236', '62260', 'Nutrifactor', 67, '2027-07-14'),
+('Bronchofree', '45237', '62261', 'Highnoon', 36, '2026-06-19'),
+('Acidcare', '45238', '62262', 'Abbott', 43, '2027-04-27'),
+('Osteoguard', '45239', '62263', 'Pfizer', 52, '2027-01-18'),
+('Liveraid', '45240', '62264', 'Getz Pharma', 29, '2027-06-25'),
+
+('Kidneylife', '45241', '62265', 'Hilton Pharma', 34, '2027-08-03'),
+('Visionguard', '45242', '62266', 'Alcon', 22, '2027-05-09'),
+('Femicare Plus', '45243', '62267', 'Searle', 46, '2027-02-24'),
+('Childgrow', '45244', '62268', 'Nutrifactor', 61, '2027-07-01'),
+('DefendMax', '45245', '62269', 'Getz Pharma', 40, '2026-06-22');
+INSERT INTO medicines
+(medicine_name, registration_no, manufacturing_license_no, manufactured_by, quantity, expiry_date)
+VALUES
+
+('Respiraid', '45246', '62270', 'Getz Pharma', 32, '2026-06-16'),
+('Cardiopro', '45247', '62271', 'Hilton Pharma', 41, '2026-06-17'),
+('Neuroplus', '45248', '62272', 'Sami Pharma', 28, '2026-06-18'),
+('Gastrocare', '45249', '62273', 'Abbott', 35, '2026-06-19'),
+('Pulmoguard', '45250', '62274', 'Highnoon', 44, '2026-06-20'),
+
+('Hepaclean', '45251', '62275', 'Pfizer', 23, '2026-06-21'),
+('Renacure', '45252', '62276', 'Getz Pharma', 39, '2026-06-22'),
+('Immunicare', '45253', '62277', 'Hilton Pharma', 47, '2026-06-23'),
+('Vitashine', '45254', '62278', 'Nutrifactor', 56, '2026-06-24'),
+('Flexiheal', '45255', '62279', 'Sami Pharma', 37, '2026-06-25'),
+
+('Dermaguard', '45256', '62280', 'Abbott', 29, '2026-06-26'),
+('Allercalm', '45257', '62281', 'Pfizer', 31, '2026-06-27'),
+('Sugarfix', '45258', '62282', 'Getz Pharma', 43, '2026-06-28'),
+('Heartcare Plus', '45259', '62283', 'Hilton Pharma', 52, '2026-06-29'),
+('Powervita', '45260', '62284', 'Nutrifactor', 64, '2026-06-30'),
+
+('Bronchofast', '45261', '62285', 'Highnoon', 36, '2026-07-01'),
+('Acidrelief', '45262', '62286', 'Abbott', 40, '2026-07-02'),
+('Boneguard', '45263', '62287', 'Pfizer', 34, '2026-07-03'),
+('Livercare Plus', '45264', '62288', 'Getz Pharma', 27, '2026-07-04'),
+('Kidneyguard', '45265', '62289', 'Hilton Pharma', 38, '2026-07-05'),
+
+('Opticare', '45266', '62290', 'Alcon', 21, '2027-03-10'),
+('Femiboost', '45267', '62291', 'Searle', 49, '2027-04-12'),
+('Juniorvita', '45268', '62292', 'Nutrifactor', 55, '2027-05-20'),
+('Immunoshield', '45269', '62293', 'Getz Pharma', 42, '2027-06-15'),
+('Metabocare', '45270', '62294', 'Hilton Pharma', 31, '2027-07-08');
+INSERT INTO medicines
+(medicine_name, registration_no, manufacturing_license_no, manufactured_by, quantity, expiry_date)
+VALUES
+
+('Respivent', '45271', '62295', 'Sami Pharma', 33, '2026-06-16'),
+('Cardionex', '45272', '62296', 'Abbott', 41, '2026-06-18'),
+('Neurocare Plus', '45273', '62297', 'Pfizer', 24, '2026-06-20'),
+('Digestofit', '45274', '62298', 'Getz Pharma', 45, '2026-06-22'),
+('Pulmofresh', '45275', '62299', 'Hilton Pharma', 36, '2026-06-24'),
+
+('Hepaguard Plus', '45276', '62300', 'Highnoon', 28, '2026-06-26'),
+('Renalife', '45277', '62301', 'Abbott', 40, '2026-06-28'),
+('Immunofresh', '45278', '62302', 'Pfizer', 57, '2026-06-30'),
+('Vitamax Gold', '45279', '62303', 'Nutrifactor', 62, '2026-07-02'),
+('Flexicare Plus', '45280', '62304', 'Getz Pharma', 34, '2026-07-04'),
+
+('Skinprotect', '45281', '62305', 'Hilton Pharma', 27, '2026-07-06'),
+('Allershield', '45282', '62306', 'Sami Pharma', 39, '2026-07-08'),
+('Sugarwell', '45283', '62307', 'Abbott', 43, '2026-07-10'),
+('Heartwell', '45284', '62308', 'Pfizer', 46, '2026-07-12'),
+('Enercare', '45285', '62309', 'Nutrifactor', 54, '2026-07-14'),
+
+('Bronchoguard', '45286', '62310', 'Highnoon', 37, '2026-07-16'),
+('Acidshield', '45287', '62311', 'Getz Pharma', 41, '2026-07-18'),
+('Osteoprotect', '45288', '62312', 'Hilton Pharma', 30, '2026-07-20'),
+('Liverboost', '45289', '62313', 'Sami Pharma', 29, '2026-07-22'),
+('Kidneyprotect', '45290', '62314', 'Abbott', 35, '2026-07-24'),
+
+('Eyefresh', '45291', '62315', 'Alcon', 20, '2027-01-18'),
+('Womencare Plus', '45292', '62316', 'Searle', 44, '2027-03-22'),
+('Kidsgrow', '45293', '62317', 'Nutrifactor', 58, '2027-05-05'),
+('Defencecare', '45294', '62318', 'Getz Pharma', 49, '2027-06-18'),
+('Glucowell', '45295', '62319', 'Hilton Pharma', 33, '2027-07-01');
+INSERT INTO medicines
+(medicine_name, registration_no, manufacturing_license_no, manufactured_by, quantity, expiry_date)
+VALUES
+
+('Pulmoclear', '45296', '62320', 'Highnoon', 31, '2026-06-17'),
+('Cardiosafe', '45297', '62321', 'Abbott', 45, '2026-06-19'),
+('Neuroshield', '45298', '62322', 'Pfizer', 27, '2026-06-21'),
+('Digesticare', '45299', '62323', 'Getz Pharma', 38, '2026-06-23'),
+('Respicure Plus', '45300', '62324', 'Hilton Pharma', 42, '2026-06-25'),
+
+('Hepafresh', '45301', '62325', 'Sami Pharma', 24, '2026-06-27'),
+('Renaprotect', '45302', '62326', 'Highnoon', 35, '2026-06-29'),
+('Immuguard', '45303', '62327', 'Abbott', 51, '2026-07-01'),
+('Vitahealth', '45304', '62328', 'Nutrifactor', 61, '2026-07-03'),
+('Flexipro', '45305', '62329', 'Getz Pharma', 32, '2026-07-05'),
+
+('Dermacure Plus', '45306', '62330', 'Hilton Pharma', 26, '2026-07-07'),
+('Allerprotect', '45307', '62331', 'Pfizer', 39, '2026-07-09'),
+('Sugarguard', '45308', '62332', 'Sami Pharma', 47, '2026-07-11'),
+('Heartguard', '45309', '62333', 'Abbott', 53, '2026-07-13'),
+('Energyvita', '45310', '62334', 'Nutrifactor', 65, '2026-07-15'),
+
+('Bronchocure', '45311', '62335', 'Highnoon', 37, '2026-07-17'),
+('Acidcare Plus', '45312', '62336', 'Getz Pharma', 40, '2026-07-19'),
+('Boneprotect', '45313', '62337', 'Hilton Pharma', 34, '2026-07-21'),
+('Liverprotect', '45314', '62338', 'Sami Pharma', 28, '2026-07-23'),
+('Kidneyvita', '45315', '62339', 'Abbott', 33, '2026-07-25'),
+('Visioncare Plus', '45316', '62340', 'Alcon', 22, '2027-02-08'),
+('Femiguard', '45317', '62341', 'Searle', 43, '2027-04-17'),
+('Growthcare', '45318', '62342', 'Nutrifactor', 55, '2027-05-28'),
+('Defencevita', '45319', '62343', 'Getz Pharma', 48, '2027-06-20'),
+('Glucoprotect', '45320', '62344', 'Hilton Pharma', 36, '2027-07-14');
+SELECT * FROM users;
+SELECT * FROM pharmacists;
+DESCRIBE users;
+USE medicine_expiry_system;
+SELECT * FROM users;
+TRUNCATE TABLE users;
+ALTER TABLE users
+ADD CONSTRAINT unique_username
+UNIQUE (name);
+SELECT * FROM medicines;
+DESCRIBE pharmacists;
+ALTER TABLE pharmacists
+ADD CONSTRAINT unique_pharmacist
+UNIQUE (pharmacist_id);
